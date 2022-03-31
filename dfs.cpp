@@ -1,4 +1,5 @@
 // Пошаговый обход графа
+// by misshimichka
 
 
 #include <iostream>
