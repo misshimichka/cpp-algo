@@ -8,6 +8,26 @@ using namespace std;
 ifstream in("input.txt");
 ofstream out("output.txt");
 
+int stack[1000000];
+int top = 0;
+
+
+bool is_empty(int s[]) {
+    return top == 0;
+}
+
+void push(int n) {
+    top++;
+    stack[top] = n;
+}
+
+int pop() {
+    int result = stack[top];
+    stack[top] = 0;
+    top--;
+    return result;
+}
+
 
 int main() {
     int n;
@@ -15,18 +35,14 @@ int main() {
     int number;
     in >> n;
 
-    vector<int> stack(0);
-
-    for (int i = 0; i < n; i++) {
+    for (long i = 0; i < n; i++) {
         in >> sign;
         if (equal(sign.begin(), sign.end(), "+")) {
             in >> number;
-            stack.push_back(number);
+            push(number);
         }
         else {
-            int pop = stack[stack.size() - 1];
-            stack.pop_back();
-            out << pop << endl;
+            out << pop() << endl;
         }
     }
     in.close();
